@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="MyController">
+    <input type="text" ng-model="empName">
+    <p>员工姓名1：{{empName}}</p>
+  </div>
+  <div ng-controller="MyController2">
+    <input type="text" ng-model="empName">
+    <p>员工姓名1：{{empName}}</p>
+  </div>
+
+<script type="text/javascript" src="../../js/angular-1.5.5/angular.js"></script>
+<script type="text/javascript">
+  // console.log(angular);
+  // 创建模块对象
+  // var myModule = angular.module("myApp", []);
+  // // 生成作用域对象
+  // myModule.controller("MyController", function ($scope) {
+  //   $scope.empName = "tom";
+  // })
+  // myModule.controller("MyController2", function ($scope) {
+  //   $scope.empName = "jack";
+  // })
+
+  // 优化 链式调用
+  // angular.module("myApp", [])
+  //         .controller("MyController", function ($scope) { // 返回值是 模块对象
+  //           $scope.empName = "tom";
+  //         })
+  //         .controller("MyController2", function ($scope) { // 隐式声明依赖注入
+  //           $scope.empName = "jack";
+  //         })
+
+  /**
+   * 以上的代码有问题：
+   * js 代码压缩后形参会用 abcd 字母代替
+   * 代码压缩的 $scope 会被 abcd 代替，angular 解析不了
+   * 解决方案
+   */
+  angular.module("myApp", [])
+          .controller("MyController", ['$scope', function ($scope) {  // 显示声明依赖注入
+            $scope.empName = "tom";
+          }])
+          .controller("MyController2", ['$scope', function ($scope) {
+            $scope.empName = "jack";
+          }]);
+</script>
+</body>
+</html>

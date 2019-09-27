@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>AngularJS入门小demo-5 事件指令</title>
+		<script src="angular.min.js"></script>
+		<script>
+			var app = angular.module("myApp", []);
+			app.controller("myController", function($scope){
+				$scope.add = function(){
+					$scope.z = parseInt($scope.x) + parseInt($scope.y)
+				}
+			})
+		</script>
+	</head>
+	<body ng-app="myApp" ng-controller="myController">
+		第一个数：<input ng-model="x"><br/>
+		第二个数：<input ng-model="y"><br/>
+		<button ng-click="add()">加法运算</button>
+		运算结果：{{z}}
+	</body>
+</html>

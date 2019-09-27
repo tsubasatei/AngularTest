@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>AngularJS入门小demo-7 循环对象数组</title>
+		<script src="angular.min.js"></script>
+		<script>
+			var app = angular.module("myApp", []);
+			app.controller("myController", function($scope){
+				$scope.list = [
+					{name:'张三', math:'100', english:'100'},
+					{name:"李四", math:"90", english:"95"},
+					{name:"王五", math:"84", english:"76"}
+				];
+			})
+		</script>
+	</head>
+	<body ng-app="myApp" ng-controller="myController">
+		<table>
+			<tr>
+				<td>姓名</td>
+				<td>数学</td>
+				<td>英语</td>
+			</tr>
+			<tr ng-repeat="entity in list">
+				<td>{{entity.name}}</td>
+				<td>{{entity.math}}</td>
+				<td>{{entity.english}}</td>
+			</tr>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+
+<body>
+<!--
+    * 依赖对象：完成某个特定的功能需要某个对象才能实现，这个对象就是依赖对象。
+    * 依赖注入：依赖的对象以形参的形式被注入进来使用，这种方式就是依赖注入。
+    * angular的 ‘$scope’对象就是依赖对象，并且是依赖注入的形式进行使用。
+      ！！！形参必须是特定的名称, 否则Angular无法注入抛异常
+
+    * 回调函数的event的就是依赖对象
+    * 回调函数有形参就是依赖注入
+
+    开发的两种方式：
+        需求：将数组里的每一项值加 10 输出
+        1、命令式
+            * 更加注重的是执行的过程
+            * 更像开始的解答题
+        2、声明式
+            * 更加注重的是执行的结果
+            * 声明式是对命令的局部包装
+            * 更像选择或填空题
+-->
+  <button id="btn">客官，点我一下</button>
+<script type="text/javascript" src="../../js/angular-1.2.29/angular.js"></script>
+<script type="text/javascript">
+  document.getElementById("btn").onclick = function (ev) {
+    alert(ev.clientX); // 随机数
+  }
+</script>
+
+<script type="text/javascript">
+  var arr = [1, 2,3,4,5];
+
+  // 命令式
+  var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    var value = arr[i] + 10;
+    newArr.push(value);
+  }
+  console.log(newArr);
+
+  // 声明式
+  var newArr2 = arr.map(function (item, index) {
+    return item + 10;
+  });
+  console.log(newArr2);
+</script>
+</body>
+</html>
